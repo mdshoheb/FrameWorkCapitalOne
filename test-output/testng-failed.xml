@@ -6,8 +6,8 @@
       <class name="pages.HomePageTest">
         <methods>
           <include name="tearUp"/>
-          <include name="getStartedTest"/>
           <include name="setUp"/>
+          <include name="signInButtonClickedTest"/>
         </methods>
       </class> <!-- pages.HomePageTest -->
     </classes>

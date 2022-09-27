@@ -1,5 +1,7 @@
 package baseUtil;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -9,19 +11,23 @@ import pages.HomePage;
 public class BaseClass {
 	WebDriver driver;
 	public HomePage homePage;
-	
+
 	@BeforeMethod
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "/Users/mdshoheb/eclipse-workspace/com.capitalone/Driver/chromedriver");
+		System.setProperty("webdriver.chrome.driver",
+				"/Users/mdshoheb/eclipse-workspace/com.capitalone/Driver/chromedriver");
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
 		driver.get("https://www.capitalone.com/");
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		homePage = new HomePage(driver);
 	}
-	
+
 	@AfterMethod
 	public void tearUp() {
 		driver.quit();
 	}
-	
 
 }
