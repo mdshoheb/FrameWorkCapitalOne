@@ -4,16 +4,6 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import baseUtil.BaseClass;
 
-/*
- In your existing framework use getProperties()
- and setProperties() method to locate the chromedriver. 
- You can use all type of locators to find web element and test for each. 
- For css, try to use at least 3 way to create unique web element. 
- Use isDisplayed() and isEnabled() method to test.
- You can also choose more than one url to see those actions (better). 
-  Please push it to GitHub
- */
-
 public class HomePageTest extends BaseClass {
 
 	@Test(enabled = false, priority = 6)
