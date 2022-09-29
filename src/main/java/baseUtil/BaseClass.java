@@ -9,13 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 public class BaseClass {
-	WebDriver driver;
+	public WebDriver driver;
 	public HomePage homePage;
 
 	@BeforeMethod
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver",
-				"/Users/mdshoheb/eclipse-workspace/com.capitalone/Driver/chromedriver");
+		// System.setProperty("webdriver.chrome.driver","/Users/mdshoheb/eclipse-workspace/com.capitalone/Driver/chromedriver");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Driver/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -24,10 +24,11 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		homePage = new HomePage(driver);
 	}
-
+	
 	@AfterMethod
 	public void tearUp() {
 		driver.quit();
 	}
-
+	
 }
+
