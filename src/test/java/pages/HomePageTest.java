@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import baseUtil.BaseClass;
 
@@ -189,6 +192,57 @@ public class HomePageTest extends BaseClass {
 		driver.navigate().refresh();
 		Thread.sleep(4000);
 
+	}
+
+	@Test(enabled = false)
+	public void dropDwonByIndex() throws InterruptedException {
+		driver.get("https://www.amazon.com/");
+		WebElement dropElement = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+		Select select1 = new Select(dropElement);
+		select1.selectByIndex(5);
+		Thread.sleep(5000);
+
+	}
+
+	@Test(enabled = false)
+	public void dropDownByValue() throws InterruptedException {
+		driver.get("https://www.amazon.com/");
+		WebElement dropElement = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+		Select select2 = new Select(dropElement);
+		select2.selectByValue("search-alias=warehouse-deals");
+		Thread.sleep(4000);
+	}
+
+	@Test(enabled = false)
+	public void dropDownByVisibleText() throws InterruptedException {
+		driver.get("https://www.amazon.com/");
+		WebElement dropElement = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+		Select select3 = new Select(dropElement);
+		select3.selectByVisibleText("Apps & Games");
+		Thread.sleep(4000);
+	}
+
+	@Test(enabled = false)
+	public void mouseHoverOver() throws InterruptedException {
+		Actions actions = new Actions(driver);
+		WebElement checkingAndSavingsElement = driver.findElement(By.xpath("//span[text()='Checking & Savings']"));
+		actions.moveToElement(checkingAndSavingsElement).build().perform();
+		Thread.sleep(4000);
+	}
+
+	@Test(enabled = false)
+	public void logotest() {
+		WebElement logo = driver.findElement(By.xpath("//a[@id='unav-l1-logo']"));
+		boolean flag = logo.isDisplayed();
+		Assert.assertTrue(true, "logo is not displayed");
+
+	}
+
+	@Test(enabled = true)
+	public void getTitleByAssert() {
+		String expected = "Capital One Credit Cards, Bank, and Loans - Personal and Business";
+		String actual = driver.getTitle();
+		Assert.assertEquals(actual, expected, "The title don't match");
 	}
 
 }

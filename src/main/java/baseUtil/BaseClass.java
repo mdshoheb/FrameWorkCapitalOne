@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 
 public class BaseClass {
@@ -18,7 +20,8 @@ public class BaseClass {
 		// + "/Driver/chromedriver");
 		// System.setProperty("webdriver.gecko.driver", "./Driver/geckodriver");
 		// driver = new FirefoxDriver();
-		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver");
+		// System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver");
+		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
